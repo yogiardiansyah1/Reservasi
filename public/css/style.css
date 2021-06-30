@@ -3,13 +3,14 @@
 body { 
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #ddd;
+  background: white;
 }
 
 .header {
-  overflow: hidden;
+  position: fixed;
   background-color: turquoise;
-  padding: 20px 10px;
+  padding: 10px 20px;
+  width: 100%;
 }
 
 .header a {
@@ -33,9 +34,11 @@ body {
 }
 
 .main{
-  position: relative;
+  padding-top: 100px;
   width: 90%;
   margin: auto;
+  background: white;
+  height: auto;
 }
 
 @media screen and (max-width: 500px) {
@@ -50,7 +53,7 @@ body {
   }
 }
 
-.site-footer
+.footer
 {
   background-color:turquoise;
   padding:20px;
@@ -58,35 +61,44 @@ body {
   text-align: center;
   line-height:24px;
   color:black;
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: 10%;
 }
 
-.background{
-    padding:10px;
-    border: 5px groove black;
-    border-spacing: 10%;
-    width: 700px;
-    height: 300px;
-    margin: auto;
+.login{
+  width: 600px;
+  margin: auto;
+  padding: 100px 0;
 }
 
-.kiri {
-    width: 70%;
-    height: 100px;
-    float: left;
-    padding: 20px;
+.btn{
+  background: white;
+  width: 200px;
+  height: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.2s ease;
+  border-radius: 5px;
+  color: turquoise;
+  margin: auto;
+  border: solid 3px turquoise;
 }
 
-.kanan {
-    margin-left: 70%;
-    height: 100px;
-    padding: 20px;
-}
 /* Login */
-.user,.pass{
+.inp{
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px; 
+  border: none;
+  border-bottom: 2px solid turquoise;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  transition: 0.2s ease;
+  margin-bottom: 50px;
+}
+
+/* .user,.pass{
     width: 600px;
     display: block;
     box-sizing: border-box;
@@ -98,8 +110,8 @@ body {
     font-size: 14px;
     transition: 0.2s ease;
     margin-bottom: 50px;
-}
-.login,.input{
+} */
+/* .login,.input{
     height:40px;
     width:90px;
     background-color: #40E0D0;
@@ -109,101 +121,4 @@ body {
     border: none;
     font-size: 14px;
     font-weight: bold;
-}
-
-/* tambah */
-.belakang{
-    margin-top: 30px;
-    height: auto;
-    width: 800px;
-    border: 2px solid grey;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-.id,.nama,.jumlah,.harga,.des{
-    width: 400px;
-    display: block;
-    box-sizing: border-box;
-    height: 50px; 
-    border: none;
-    border-bottom: 2px solid turquoise;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    transition: 0.2s ease;
-    margin-bottom: 20px;
-}
-
-.tampil {
-  border:2px solid turquoise;
-  border-collapse: collapse;
-  height: 40px;
-  background: white;
-  padding: 10px;
-}
-
-.cari{
-  width: 200px;
-    display: block;
-    box-sizing: border-box;
-    height: 30px; 
-    border: none;
-    border-bottom: 2px solid turquoise;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    transition: 0.2s ease;
-    margin-bottom: 20px;
-}
-
-.submitcari{
-  height:40px;
-    width:50px;
-    background-color: #40E0D0;
-    color:white;
-    padding: 0px;
-    border-radius: 10px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: -12px;
-}
-.tambahkan {
-  height:40px;
-    width:85px;
-    background-color: #40E0D0;
-    color:white;
-    padding: 0px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.bordercart {
-    height: auto;
-    width: 425px;
-    border: 2px solid grey;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.checkout{
-  height:30px;
-    width:85px;
-    background-color: #40E0D0;
-    color:white;
-    padding: 0px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-}
-.dashboard{
-  height:30px;
-    width:85px;
-    background-color: #40E0D0;
-    color:white;
-    padding: 0px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-}
+} */

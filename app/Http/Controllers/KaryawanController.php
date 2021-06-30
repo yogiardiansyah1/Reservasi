@@ -6,7 +6,11 @@ use Illuminate\Support\Facades\DB;
 
 class KaryawanController extends Controller
 {
-    public function cekLogin($id, $password) {
+    public function cekLogin($id, $password)
+    {
+        if (!(isset($id) && isset($password))) {
+            return 0;
+        }
         $admin = DB::table('karyawan')->where('id', $id)->get();
         foreach ($admin as $data) {
             if ($data->password == $password) {
@@ -16,12 +20,14 @@ class KaryawanController extends Controller
             }
         }
     }
-    
-    public function insert($data){
+
+    public function insert($data)
+    {
         DB::table('karyawan')->insert($data);
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         return DB::table('karyawan')->get();
     }
 }

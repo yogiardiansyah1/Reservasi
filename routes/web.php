@@ -19,22 +19,9 @@ Route::get('/home', function() {
     return view('home');
 });
 
-Route::get('/user/register', function() {
-    return view('user/register');
-});
-
-Route::get('/user/login', function() {
-    return view('user/login');
-});
-
-Route::get('/user', function() {
-    return view('user/index');
-});
-
-Route::get('/user/changepassword', function() {
-    return view('user/password');
-});
-
+/**
+ *          KARYAWAN
+ */
 Route::get('/karyawan/login', function() {
     return view('karyawan/login');
 });
@@ -43,7 +30,7 @@ Route::get('/menu', function() {
     return view('karyawan/listmenu');
 });
 
-Route::get('/editmenu', function() {
+Route::get('/menu/edit', function() {
     return view('karyawan/managemenu');
 });
 
@@ -51,28 +38,26 @@ Route::get('/karyawan', function() {
     return view('karyawan/managekaryawan');
 });
 
+
 Route::get('/transaksi', function() {
     return view('karyawan/penjualan');
 });
 
+/**
+ *          RESERVASI
+ */
 Route::get('/reservasi', function() {
-    return view('reservasi/index');
+    return view('reservasi.index');
 });
 
-Route::get('/reservasi/kode', function() {
-    return view('reservasi/kodereservasi');
+Route::post('/reservasi/memproses', 'ReservasiController@proses');
+
+Route::get('/reservasi/sukses', function() {
+    return view('reservasi/sukses');
 });
 
-Route::get('/reservasi/edit', function() {
-    return view('reservasi/meja');
-});
+/**
+ *          PENJUALAN
+ */
 
-Route::get('/reservasi/pembayaran', function() {
-    return view('reservasi/pembayaran');
-});
-
-Route::get('/user/berhasil', function() {
-    return view('user/berhasil');
-});
-
-Route::post('/user/login/cek','UserController@checkLogin');
+ Route::get('/test', 'ReservasiController@getSisaKursi');
