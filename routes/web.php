@@ -26,28 +26,20 @@ Route::get('/karyawan/login', function() {
     return view('karyawan/login');
 });
 
-Route::get('/menu', function() {
-    return view('karyawan/listmenu');
-});
+Route::post('/karyawan/ceklogin', 'KaryawanController@cekLogin');
 
-Route::get('/menu/edit', function() {
-    return view('karyawan/managemenu');
-});
+
 
 Route::get('/karyawan', function() {
-    return view('karyawan/managekaryawan');
+    return view('karyawan/edit');
 });
 
-
-Route::get('/transaksi', function() {
-    return view('karyawan/penjualan');
-});
 
 /**
  *          RESERVASI
  */
 Route::get('/reservasi', function() {
-    return view('reservasi.index');
+    return view('reservasi/index');
 });
 
 Route::post('/reservasi/memproses', 'ReservasiController@proses');
@@ -59,5 +51,14 @@ Route::get('/reservasi/sukses', function() {
 /**
  *          PENJUALAN
  */
+Route::get('/menu', 'MenuController@getAllMenu');
+
+Route::get('/menu/edit', function() {
+    return view('penjualan/edit');
+});
+
+Route::get('/transaksi', function() {
+    return view('penjualan/riwayat');
+});
 
  Route::get('/test', 'ReservasiController@getSisaKursi');

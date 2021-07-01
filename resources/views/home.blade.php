@@ -1,4 +1,4 @@
 @extends('master')
 @section('content')    
-<h1>Home</h1>
+<h1 class="home">Home</h1>
 @endsection

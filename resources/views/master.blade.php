@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+
 <head>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>{{config('app.name', 'Restoran')}}</title>
+    <title>{{ config('app.name', 'Restoran') }}</title>
 </head>
+
 <body>
     <div class="header">
-        <h1>Logo</h1>
+        <a href="/home" class="logo">Logo</a>
         <div class="header-right">
             <a href="/reservasi">Reservasi</a>
         </div>
@@ -17,4 +19,5 @@
         <h1>ini footer</h1>
     </div>
 </body>
+
 </html>
