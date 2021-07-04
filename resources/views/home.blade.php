@@ -1,4 +1,4 @@
 @extends('master')
-@section('content')    
-<h1 class="home">Home</h1>
+@section('content')
+<a href="/xm"> xml</a>
 @endsection

@@ -17,4 +17,9 @@ class PenjualanController extends Controller
     public function getPenjualanByRange($from, $to){
         // return DB::table('penjualan')->where('id', $from.'%')->get();
     }
+
+    //Detail Penjualan
+    public function getAlldetail(){
+        return view('penjualan/xml', ['data' => DB::table('detail_penjualan')->get()]);
+    }
 }

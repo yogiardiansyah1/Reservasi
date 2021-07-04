@@ -62,3 +62,8 @@ Route::get('/transaksi', function() {
 });
 
  Route::get('/test', 'ReservasiController@getSisaKursi');
+
+ Route::get('/xm','PenjualanController@getAlldetail');
+ Route::get('/cs', function() {
+    return view('penjualan/csv');
+});
