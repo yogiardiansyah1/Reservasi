@@ -1,132 +1,30 @@
-* {box-sizing: border-box;}
-
-body { 
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: white;
-}
-
-.header {
-  position: fixed;
-  background-color: turquoise;
-  padding: 10px 20px;
-  width: 100%;
-}
-
-.header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
-  border-radius: 4px;
-}
-
-.header a.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.header-right {
-  float: right;
-  margin-top: auto;
+body{
+  background: #eee;
 }
 
 .main{
-  padding-top: 100px;
-  width: 90%;
+  width: 85%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.form{
+  width: 60%;
   margin: auto;
   background: white;
-  height: auto;
+  padding: 30px;
 }
 
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .header-right {
-    float: none;
-  }
+.mgt{
+  margin-top: 1.5rem!important;
 }
 
-.footer
-{
-  background-color:turquoise;
-  padding:20px;
-  font-size:15px;
-  text-align: center;
-  line-height:24px;
-  color:black;
-  width: 100%;
+.rsv-card{
+  padding: 15px;
 }
 
-.home{
-  height: 600px;
-  margin: auto;
-  padding: 30px 0;
+.rsv-tbl{
+  width: 550px;
 }
-
-.login{
-  width: 600px;
-  margin: auto;
-  padding: 100px 0;
-}
-
-.btn{
-  float: right;
-  background: white;
-  width: 200px;
-  height: 50px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  transition: 0.2s ease;
-  border-radius: 5px;
-  color: turquoise;
-  margin: auto;
-  border: solid 3px turquoise;
-}
-
-/* Login */
-.inp{
-  width: 100%;
-  box-sizing: border-box;
-  height: 50px; 
-  border: none;
-  border-bottom: 2px solid turquoise;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  transition: 0.2s ease;
-  margin-bottom: 50px;
-}
-
-/* .user,.pass{
-    width: 600px;
-    display: block;
-    box-sizing: border-box;
-    height: 50px; 
-    border: none;
-    border-bottom: 2px solid turquoise;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    transition: 0.2s ease;
-    margin-bottom: 50px;
-} */
-/* .login,.input{
-    height:40px;
-    width:90px;
-    background-color: #40E0D0;
-    color:white;
-    padding: 0px;
-    border-radius: 10px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-} */

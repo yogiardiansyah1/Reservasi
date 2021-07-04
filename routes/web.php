@@ -11,17 +11,24 @@
 |
 */
 
-Route::get('/laravel', function () {
-    return view('welcome');
-});
+Route::get('/test', 'ViewController@test');
+Route::get('/', 'ViewController@home');
 
+//  KARYAWAN
+Route::get('/karyawan/{path}', 'ViewController@karyawan');
+
+//  RESERVASI
+Route::get('/reservasi', 'ViewController@reservasi_index');
+Route::post('/reservasi/detail', 'ViewController@reservasi_detail');
+Route::post('/reservasi/proses', 'ReservasiController@proses');
+Route::post('/reservasi/berhasil', 'ViewController@reservasi_berhasil');
+
+
+/*
 Route::get('/home', function() {
     return view('home');
 });
 
-/**
- *          KARYAWAN
- */
 Route::get('/karyawan/login', function() {
     return view('karyawan/login');
 });
@@ -35,9 +42,6 @@ Route::get('/karyawan', function() {
 });
 
 
-/**
- *          RESERVASI
- */
 Route::get('/reservasi', function() {
     return view('reservasi/index');
 });
@@ -48,9 +52,6 @@ Route::get('/reservasi/sukses', function() {
     return view('reservasi/sukses');
 });
 
-/**
- *          PENJUALAN
- */
 Route::get('/menu', 'MenuController@getAllMenu');
 
 Route::get('/menu/edit', function() {
@@ -62,3 +63,4 @@ Route::get('/transaksi', function() {
 });
 
  Route::get('/test', 'ReservasiController@getSisaKursi');
+ */

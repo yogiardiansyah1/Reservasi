@@ -1,11 +1,23 @@
-@extends('master')
+<?php
+
+if (null !== session()->get('message')) {
+$msg = session()->get('message');
+echo "<script type='text/javascript'>
+    alert('$msg');
+
+</script>";
+} ?>
+@extends('layout.app')
 @section('content')
-    <form class="login" method="POST" action="/reservasi/memproses">
+    <form class="form" method="POST" action="/reservasi/detail">
         {{ csrf_field() }}
-        <input class="inp" type="text" name="nama" placeholder="Nama Lengkap" required>
-        <input class="inp" type="text" name="email" placeholder="Email" required>
-        <input class="inp" type="number" name="kursi" placeholder="Jumlah Kursi" required>
-        <input class="inp" type="datetime-local" name="tanggal" placeholder="Jumlah Kursi" required>
-        <input class="btn" type="submit" value="Reservasi">
+        <fieldset>
+            <legend>Detail reservasi</legend>
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label mt-4">Tanggal reservasi</label>
+                <input type="datetime-local" class="form-control" id="exampleInputName1" name="tanggal" required>
+            </div>
+            <button type="submit" class="btn btn-primary mgt">Next</button>
+        </fieldset>
     </form>
 @endsection
