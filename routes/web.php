@@ -31,9 +31,9 @@ Route::post('/reservasi/proses', 'ReservasiController@proses');
 Route::post('/reservasi/berhasil', 'ViewController@reservasi_berhasil');
 
 
- Route::get('/xm', 'PenjualanController@getAlldetail');
- Route::get('/cs', 'ViewController@csv');
- 
+Route::get('/cs', 'ViewController@csv');
+Route::get('/xm', 'PenjualanController@createxml');
+
 
 /*
 Route::get('/home', function() {
@@ -76,4 +76,3 @@ Route::get('/transaksi', function() {
  Route::get('/test', 'ReservasiController@getSisaKursi');
 <<<<<<< HEAD
  */
-
