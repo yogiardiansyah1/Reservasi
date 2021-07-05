@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ViewController extends Controller
 {
@@ -58,7 +59,7 @@ class ViewController extends Controller
         $current = date_create(date('Y-m-d', time()));
         $picked_date = date_create($tgl);
         $diff = date_diff($current, $picked_date);
-        if ($diff->format("%R%a") <= 0)
+        if ($diff->format("%R%a") < 1)
             return redirect('/reservasi')->with(['message' => 'Tanggal tidak valid.']);
 
         $object = new ReservasiController();
@@ -67,7 +68,7 @@ class ViewController extends Controller
 
     public function test()
     {
-        return view('test');
+        return str_pad('1', 4, '0', STR_PAD_LEFT);
     }
 
     public function csv()
