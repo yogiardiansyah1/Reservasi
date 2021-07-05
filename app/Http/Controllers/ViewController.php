@@ -54,20 +54,18 @@ class ViewController extends Controller
     public function reservasi_detail(Request $data)
     {
         $tgl = str_replace('T', ' ', $data['tanggal']);
-
-        $current = date_create(date('Y-m-d', time()));
-        $picked_date = date_create($tgl);
-        $diff = date_diff($current, $picked_date);
-        if ($diff->format("%R%a") <= 0)
-            return redirect('/reservasi')->with(['message' => 'Tanggal tidak valid.']);
-
+        date_default_timezone_set('Asia/Jakarta');
+        if(date('d') >= date_format(date_create($tgl), 'd')) {
+            return redirect()->back()->with(['msg' => 'Minimal tanggal reservasi H-1.']);
+        }
         $object = new ReservasiController();
         return view('reservasi/detail', ['tgl' => $data['tanggal'], 'data' => $object->getSisaKursi($tgl)]);
     }
 
     public function test()
     {
-        return view('test');
+        $object = new ReservasiController();
+        return $object->getReservasiAktif();
     }
 
     public function csv()

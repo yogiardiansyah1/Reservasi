@@ -38,7 +38,7 @@ class PenjualanController extends Controller
 
     public function createxml()
     {
-        $date = date('d/m/y');
+        $date = date('y/m/d');
         $dt = str_replace('/', '', $date);
         $data = DB::table('detail_penjualan')->where('id_penjualan', 'LIKE', '%' . $dt . '%')->get();
 
@@ -52,50 +52,39 @@ class PenjualanController extends Controller
 
         $date = date('d/m/Y');
         $dt = str_replace('/', '', $date);
-        $path = 'xml/';
+        $path = 'public/xml/';
         $xml_file_name = $dt . '.xml';
 
         $root = $dom->createElement('detail_penjualan');
 
         foreach ($data as $dat) {
-
             $penjualan_node = $dom->createElement('penjualan');
-
             $child_node_id_penjualan = $dom->createElement('ID_Penjualan', $dat->id_penjualan);
-
             $penjualan_node->appendChild($child_node_id_penjualan);
 
             $child_node_id_menu = $dom->createElement('ID_Menu', $dat->id_menu);
-
             $penjualan_node->appendChild($child_node_id_menu);
 
             $child_node_quantity = $dom->createElement('Quantity', $dat->qty);
-
             $penjualan_node->appendChild($child_node_quantity);
 
             $child_node_harga = $dom->createElement('Harga', $dat->harga);
-
             $penjualan_node->appendChild($child_node_harga);
 
             $child_node_subtotal = $dom->createElement('Subtotal', $dat->subtotal);
-
             $penjualan_node->appendChild($child_node_subtotal);
-
             $root->appendChild($penjualan_node);
         }
         $dom->appendChild($root);
-
         $dom->save($path . $xml_file_name);
-
-        $this->createcsv();
     }
 
     public function createcsv()
     {
         $date = date('d/m/Y');
         $dt = str_replace('/', '', $date);
-        $path_xml = 'xml/';
-        $path_csv = 'csv/';
+        $path_xml = 'public/xml/';
+        $path_csv = 'public/csv/';
 
         $xml_file_name = $path_xml . $dt . '.xml';
         $csv_file_name = $path_csv . $dt . '.csv';
@@ -117,12 +106,5 @@ class PenjualanController extends Controller
 
             fclose($output_file);
         }
-
-        function convertXmlToCsvFile($xml_file_input, $csv_file_output)
-        {
-            
-        }
-        $mail = new MailController();
-        $mail->attachment_email();
     }
 }

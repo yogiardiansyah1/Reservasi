@@ -3,13 +3,12 @@ $email = '';
 $nama = '';
 $msg = '';
 if (null !== session()->get('data')) {
-$data = session()->get('data');
 $msg =
 "<div class=\"alert alert-dismissible alert-danger\">
     <h5 class=\"alert-heading\">Perhatian!</h5>
     <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\"></button>
     " .
-    $data['msg'] .
+    session()->get('data') .
     "</div>";
 $email = "value=\"" . $data['email'] . "\"";
 $nama = "value=\"" . $data['nama'] . "\"";

@@ -72,7 +72,24 @@ class ReservasiController extends Controller
         // return $dari . " " . date_format($sampai, 'Y-m-d');
     }
 
+
+
     public function getReservasiAktif()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $dari = date('Y-m-d');
+        $sampai = date_create($dari);
+        date_add($sampai, date_interval_create_from_date_string("1 days"));
+        $r = DB::table('reservasi')
+            ->where('status', '1')
+            ->whereBetween('tanggal', [$dari, $sampai])
+            ->get();
+        
+        // return date_format($dari, 'Y-m-d');
+        return $r;
+    }
+
+    public function get_date_now_query()
     {
     }
 }

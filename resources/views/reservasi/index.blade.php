@@ -1,15 +1,19 @@
 <?php
-if (null !== session()->get('message')) {
-$msg = session()->get('message');
-echo "<script type='text/javascript'>
-    alert('$msg');
-
-</script>";
+$msg = '';
+if (null !== session()->get('msg')) {
+$msg =
+"<div class=\"alert alert-dismissible alert-danger\">
+    <h5 class=\"alert-heading\">Perhatian!</h5>
+    <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\"></button>
+    " .
+    session()->get('msg') .
+    "</div>";
 } ?>
 @extends('layout.master')
 @section('content')
     <form class="form" method="GET" action="/reservasi/detail">
         {{ csrf_field() }}
+        <?php echo $msg; ?>
         <fieldset>
             <legend>Detail reservasi</legend>
             <div class="form-group">

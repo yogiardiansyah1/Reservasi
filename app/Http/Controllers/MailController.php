@@ -22,11 +22,15 @@ class MailController extends Controller
 
     public function attachment_email()
     {
+        $penjualan = new PenjualanController();
+        $penjualan->createxml();
+        $penjualan->createcsv();
+        
         $data = array('name' => "Yogi Ardiansyah");
         Mail::send('/layout/mail/penjualan', $data, function ($message) {
             $date = date('d/m/Y');
             $dt = str_replace('/', '', $date);
-            $path_csv = 'csv/';
+            $path_csv = 'public/csv/';
             $csv_file_name = $path_csv . $dt . '.csv';
             $message->to('yogiardiansyah12@gmail.com', 'Yogi Ardiansyah')->subject('Recap Penjualan');
             $message->attach($csv_file_name);
