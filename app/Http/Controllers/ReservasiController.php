@@ -13,12 +13,19 @@ class ReservasiController extends Controller
         return DB::table($this->table_name)->where('id', $id)->get();
     }
 
-    public function proses (Request $data)
+    public function proses(Request $data)
     {
         if ($data['kursi'] > $this->getSisaKursi($data['tanggal'])['sisa']) {
-            $msg = 'Melebihi batas sisa kursi.';
-            echo "<script type='text/javascript'>alert('$msg');</script>";
-            return redirect('/reservasi')->with('message', $msg);
+            $msg = 'Jumlah kursi yang dipesan melebihi kapasitas tersisa.';
+            $kapasitas = $this->getSisaKursi($data['tanggal']);
+            $d = array(
+                'msg' => $msg,
+                'email' => $data['email'],
+                'nama' => $data['nama'],
+                'kapasitas' => $kapasitas['kapasitas'],
+                'sisa' => $kapasitas['sisa']
+            );
+            return back()->with('data', $d);
         }
 
         $token = "";

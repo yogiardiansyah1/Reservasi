@@ -3,9 +3,7 @@ body{
 }
 
 .main{
-  width: 85%;
   margin: auto;
-  margin-top: 30px;
   margin-bottom: 30px;
   padding: 20px;
 }
@@ -17,8 +15,51 @@ body{
   padding: 30px;
 }
 
+#login {
+  width: 40%;
+}
+
+.p-3{
+  padding: 1.5rem!important;
+}
+
+.pt-3{
+  padding-top: 0.75rem!important;
+}
+
+.pt-5{
+  padding-top: 2.25rem!important;
+}
+
+.ptrb-3{
+  padding-top: 1.5rem!important;
+  padding-right: 1.5rem!important;
+  padding-bottom: 1.5rem!important;
+}
+
+.m-3{
+  margin: 1.5rem!important;
+}
+
+.mt-3{
+  margin-top: 1.5rem!important;
+}
+
 .mgt{
   margin-top: 1.5rem!important;
+}
+
+.mgb{
+  margin-bottom: 1.5rem!important;
+}
+
+.center{
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .rsv-card{

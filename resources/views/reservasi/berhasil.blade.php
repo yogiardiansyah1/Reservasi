@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.master')
 @section('content')
     <div class="card rsv-card">
         <div class="card-body">

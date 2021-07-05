@@ -8,7 +8,7 @@ class MenuController extends Controller
 {
     public function getAllMenu()
     {
-        return view('penjualan/index', ['menu', DB::table('menu')->get()]);
+        return DB::table('menu')->get();
     }
 
     public function getMenuById($id)

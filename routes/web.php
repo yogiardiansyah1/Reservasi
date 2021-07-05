@@ -15,14 +15,25 @@ Route::get('/test', 'ViewController@test');
 Route::get('/', 'ViewController@home');
 
 //  KARYAWAN
-Route::get('/karyawan/{path}', 'ViewController@karyawan');
+Route::get('/resto', 'ViewController@resto');
+Route::get('/resto/login', 'ViewController@resto_login')->name('login');
+Route::get('/resto/logout', 'RestoController@logout')->name('logout');
+Route::post('/resto/login/cek', 'RestoController@cek_login');
+Route::get('/resto/pembayaran', 'ViewController@resto_pembayaran')->name('pembayaran');
+Route::post('/resto/pembayaran/tambah/{id}', 'PembelianController@tambah_item');
+Route::get('/resto/penjualan', 'ViewController@resto_penjualan');
+Route::get('/resto/karyawan', 'ViewController@resto_karyawan');
 
 //  RESERVASI
 Route::get('/reservasi', 'ViewController@reservasi_index');
-Route::post('/reservasi/detail', 'ViewController@reservasi_detail');
+Route::get('/reservasi/detail', 'ViewController@reservasi_detail');
 Route::post('/reservasi/proses', 'ReservasiController@proses');
 Route::post('/reservasi/berhasil', 'ViewController@reservasi_berhasil');
 
+
+ Route::get('/xm', 'PenjualanController@getAlldetail');
+ Route::get('/cs', 'ViewController@csv');
+ 
 
 /*
 Route::get('/home', function() {
@@ -63,4 +74,6 @@ Route::get('/transaksi', function() {
 });
 
  Route::get('/test', 'ReservasiController@getSisaKursi');
+<<<<<<< HEAD
  */
+

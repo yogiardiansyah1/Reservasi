@@ -11,19 +11,39 @@ class ViewController extends Controller
         return view('home');
     }
 
-    public function karyawan($path)
+    public function resto()
     {
-        switch ($path) {
-            case 'login':
-                return view('karyawan/login');
-                break;
-            case 'edit':
-                return view('karyawan/edit');
-                break;
-            default:
-                return abort(404);
-                break;
+        session_start();
+        if (!isset($_SESSION['id'])) {
+            return redirect('/resto/login');
         }
+        return view('resto/kasir');
+    }
+
+    public function resto_login()
+    {
+        return view('resto/login');
+    }
+
+    public function resto_pembayaran()
+    {
+        session_start();
+        if (isset($_SESSION['id'])) {
+            $object = new MenuController();
+            return view('resto/pembayaran', ['menu' => $object->getAllMenu()]);
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function resto_penjualan()
+    {
+        return view('resto/penjualan');
+    }
+
+    public function resto_karyawan()
+    {
+        return view('resto/karyawan');
     }
 
     public function reservasi_index()
@@ -47,11 +67,11 @@ class ViewController extends Controller
 
     public function test()
     {
-        $tgl = '2021-07-02 4:00';
-        $tgl = str_replace('T', ' ', $tgl);
-        $current = date_create(date('Y-m-d', time()));
-        $picked_date = date_create($tgl);
-        $diff = date_diff($current, $picked_date);
-        return date_format($current, 'Y-m-d') . ' - ' . date_format($picked_date, 'Y-m-d') . ' = ' . $diff->format("%R%a");
+        return view('test');
+    }
+
+    public function csv()
+    {
+        return view('penjualan/csv');
     }
 }

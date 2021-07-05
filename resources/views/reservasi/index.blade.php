@@ -1,5 +1,4 @@
 <?php
-
 if (null !== session()->get('message')) {
 $msg = session()->get('message');
 echo "<script type='text/javascript'>
@@ -7,9 +6,9 @@ echo "<script type='text/javascript'>
 
 </script>";
 } ?>
-@extends('layout.app')
+@extends('layout.master')
 @section('content')
-    <form class="form" method="POST" action="/reservasi/detail">
+    <form class="form" method="GET" action="/reservasi/detail">
         {{ csrf_field() }}
         <fieldset>
             <legend>Detail reservasi</legend>
