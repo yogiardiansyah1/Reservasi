@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<detail_penjualan/>
+<detail_penjualan>
+  <penjualan>
+    <ID_Penjualan>0307210001</ID_Penjualan>
+    <ID_Menu>00001</ID_Menu>
+    <Quantity>2</Quantity>
+    <Harga>20000</Harga>
+    <Subtotal>40000</Subtotal>
+  </penjualan>
+</detail_penjualan>

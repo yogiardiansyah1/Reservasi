@@ -23,6 +23,7 @@ Route::get('/resto/pembayaran', 'ViewController@resto_pembayaran')->name('pembay
 Route::post('/resto/pembayaran/tambah/{id}', 'PembelianController@tambah_item');
 Route::get('/resto/penjualan', 'ViewController@resto_penjualan');
 Route::get('/resto/karyawan', 'ViewController@resto_karyawan');
+Route::post('/resto/pembayaran/bayar', 'PenjualanController@bayar');
 
 //  RESERVASI
 Route::get('/reservasi', 'ViewController@reservasi_index');
