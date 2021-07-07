@@ -66,39 +66,40 @@ $msg =
                         <div class="h1 pt-2">Keranjang</div>
                         <div class="card border-light mb-3">
                             <ul class="list-group">
+                                <li class="list-group-item list-group-item-action active">
+                                    <div class="row">
+                                        <div class="col-lg-4">Nama</div>
+                                        <div class="col-lg-4">Subtotal</div>
+                                        <div class="col-lg-4">Qty</div>
+                                    </div>
+                                </li>
                                 @foreach ($keranjang as $i)
 
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="row">
-                                            <div class="row">
-                                                <div class="col-lg-7 pt-3">
-                                                    {{ $i['nama'] }}
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <form class="d-flex" method="POST"
-                                                        action="/resto/pembayaran/edit/{{ $i['id'] }}">
-                                                        <input type="number" class="form-control" style="width:100px ;"
-                                                            id="" placeholder="Qty" value="{{ $i['qty'] }}">
-                                                        <button class="btn btn-primary my-2 my-sm-0" type="submit"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                fill="currentColor" class="bi bi-check2"
-                                                                viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-                                                            </svg></button>
-                                                    </form>
-                                                </div>
+                                        <div class="row pt-1" style="width: 100%;">
+                                            <div class="col-lg-6">
+                                                {{ $i['nama'] }}
                                             </div>
-                                            <div class="mt-2">
-                                                <div class="row">
-                                                    <div class="col-lg-7">
-
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        Subtotal Rp. {{ $i['harga'] * $i['qty'] }}
-                                                    </div>
-                                                </div>
+                                            <div class="col-lg-6">
+                                                Rp.
+                                                <?php
+                                                $sub = $i['harga'] * $i['qty'];
+                                                echo number_format($sub, 0, '', '.');
+                                                ?>
                                             </div>
+                                        </div>
+                                        <div class="row pt-1">
+                                            <form class="d-flex" method="POST"
+                                                action="/resto/pembayaran/edit/{{ $i['id'] }}">
+                                                <input type="number" class="form-control" style="width:100px ;" id=""
+                                                    placeholder="Qty" value="{{ $i['qty'] }}">
+                                                <button class="btn btn-primary my-2 my-sm-0" type="submit"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                                    </svg></button>
+                                            </form>
                                         </div>
                                     </li>
                                 @endforeach
