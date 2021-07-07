@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<detail_penjualan>
+  <penjualan>
+    <ID_Penjualan>2107070001</ID_Penjualan>
+    <ID_Menu>M0001</ID_Menu>
+    <Quantity>2</Quantity>
+    <Harga>15000</Harga>
+    <Subtotal>30000</Subtotal>
+  </penjualan>
+</detail_penjualan>

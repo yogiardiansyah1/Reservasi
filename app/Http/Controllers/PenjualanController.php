@@ -13,7 +13,7 @@ class PenjualanController extends Controller
     {
         DB::table('penjualan')->insert($data);
     }
-    
+
     public function bayar(Request $data)
     {
         date_default_timezone_set('Asia/Jakarta');
@@ -80,16 +80,14 @@ class PenjualanController extends Controller
 
     public function getdetailbyDatenow()
     {
-        $date = date('d/m/y');
-        $dt = str_replace('/', '', $date);
-        return view('penjualan/xml', ['data' => DB::table('detail_penjualan')->where('id_penjualan', 'LIKE', '%' . $dt . '%')->get()]);
+        $date = date('ymd');
+        return view('penjualan/xml', ['data' => DB::table('detail_penjualan')->where('id_penjualan', 'LIKE', '%' . $date . '%')->get()]);
     }
 
     public function createxml()
     {
-        $date = date('y/m/d');
-        $dt = str_replace('/', '', $date);
-        $data = DB::table('detail_penjualan')->where('id_penjualan', 'LIKE', '%' . $dt . '%')->get();
+        $d = date('ymd');
+        $data = DB::table('detail_penjualan')->where('id_penjualan', 'LIKE', '%' . $d . '%')->get();
 
         $dom = new DOMDocument();
 
@@ -99,10 +97,9 @@ class PenjualanController extends Controller
 
         $dom->formatOutput = true;
 
-        $date = date('d/m/Y');
-        $dt = str_replace('/', '', $date);
+        $date = date('dmY');
         $path = 'public/xml/';
-        $xml_file_name = $dt . '.xml';
+        $xml_file_name = $date . '.xml';
 
         $root = $dom->createElement('detail_penjualan');
 
@@ -130,13 +127,12 @@ class PenjualanController extends Controller
 
     public function createcsv()
     {
-        $date = date('d/m/Y');
-        $dt = str_replace('/', '', $date);
+        $date = date('dmY');
         $path_xml = 'public/xml/';
         $path_csv = 'public/csv/';
 
-        $xml_file_name = $path_xml . $dt . '.xml';
-        $csv_file_name = $path_csv . $dt . '.csv';
+        $xml_file_name = $path_xml . $date . '.xml';
+        $csv_file_name = $path_csv . $date . '.csv';
 
         if (file_exists($xml_file_name)) {
             $xml = simplexml_load_file($xml_file_name);

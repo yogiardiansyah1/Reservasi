@@ -1,9 +1,23 @@
+<?php 
+$status = $detail['status'];
+$title = '';
+if($status == '1') {
+    $status = 'Aktif';
+    $title = 'Reservasi Berhasil';
+    $desc = 'Berikut adalah detail reservasi anda.';
+}
+else if($status == '2') {
+    $status = 'Selesai';
+    $title = 'Reservasi Selesai';
+    $desc = 'Reservasi anda telah selesai.';
+}
+else {
+    $status = 'Dibatalkan';
+    $title = 'Reservasi Dibatalkan';
+    $desc = 'Reservasi anda dibatalkan.';
+}
+?>
 <!DOCTYPE html>
-
-<head>
-    
-</head>
-
 <body>
 
     <div class="card rsv-card">

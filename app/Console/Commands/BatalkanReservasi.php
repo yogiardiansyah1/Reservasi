@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\ReservasiController;
 use Illuminate\Console\Command;
 
 class BatalkanReservasi extends Command
@@ -37,6 +38,12 @@ class BatalkanReservasi extends Command
      */
     public function handle()
     {
-        //
+        $obj = new ReservasiController();
+        $aktif = $obj->getReservasiAktif();
+        foreach($aktif as $a){
+            if(date('H:i') == date_format(date_create($d->tanggal), 'H:i')){
+                
+            }
+        }
     }
 }
