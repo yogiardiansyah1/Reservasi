@@ -18,7 +18,7 @@ class ViewController extends Controller
         if (!isset($_SESSION['id'])) {
             return redirect('/resto/login');
         }
-        return view('resto/kasir');
+        return redirect()->route('pembayaran');
     }
 
     public function resto_login()
