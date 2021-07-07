@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReservasiController;
 use Illuminate\Console\Command;
 
@@ -12,7 +13,7 @@ class BatalkanReservasi extends Command
      *
      * @var string
      */
-    protected $signature = 'email:reservasi';
+    protected $signature = 'email:cancel-reservation';
 
     /**
      * The console command description.
@@ -38,11 +39,31 @@ class BatalkanReservasi extends Command
      */
     public function handle()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $obj = new ReservasiController();
         $aktif = $obj->getReservasiAktif();
-        foreach($aktif as $a){
-            if(date('H:i') == date_format(date_create($d->tanggal), 'H:i')){
-                
+
+        foreach ($aktif as $a) {
+            $tgl = $a->tanggal;
+            $jam = date_format(date_create($tgl), 'H');
+            $menit = date_format(date_create($tgl), 'i');
+            if (date('H') == $jam) {
+                $jarak = 2; // jarak waktu pembatalan reservasi [menit]
+                if (date('i') >= $menit + $jarak) { 
+                    $tgl_batal = date_format(date_create($tgl), 'Y-m-d ' . $jam . ':' . $menit);
+                    $data = [
+                        'id' => $a->id,
+                        'kursi' => $a->kursi,
+                        'tanggal' => date_format(date_create($tgl), 'Y-m-d H:i'),
+                        'status' => '0',
+                        'nama' => $a->nama,
+                        'email' => $a->email,
+                        'batal' => $tgl_batal
+                    ];
+                    $obj->cancel_reservation($data['id']);
+                    $mail = new MailController();
+                    $mail->cancel_reservation($data);
+                }
             }
         }
     }

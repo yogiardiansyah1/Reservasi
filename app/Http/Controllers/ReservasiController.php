@@ -84,12 +84,53 @@ class ReservasiController extends Controller
             ->where('status', '1')
             ->whereBetween('tanggal', [$dari, $sampai])
             ->get();
-        
+
         // return date_format($dari, 'Y-m-d');
         return $r;
     }
 
-    public function get_date_now_query()
+    public function cancel_reservation($id)
     {
+        DB::table('reservasi')->where('id', $id)->update(['status' => '0']);
+    }
+
+    public function batal()
+    {
+        $ass = [];
+        date_default_timezone_set('Asia/Jakarta');
+        $obj = new ReservasiController();
+        $aktif = $obj->getReservasiAktif();
+
+        foreach ($aktif as $a) {
+            $tgl = $a->tanggal;
+            $t = 'tanggal: ' . $tgl . '<br>';
+            array_push($ass, $t);
+            $jam = date_format(date_create($tgl), 'H');
+            $j = 'Jam: ' . $jam . '<br>';
+            array_push($ass, $j);
+            $menit = date_format(date_create($tgl), 'i');
+            $m = 'menit: ' . $menit . '<br>';
+            array_push($ass, $m);
+            if (date('H') == $jam) {
+                if (date('i') >= $menit + 2) {
+                    array_push($ass, $a->id . '<br>');
+                    $tgl_batal = date_format(date_create($tgl), 'Y-m-d ' . $jam . ':' . $menit);
+                    $data = [
+                        'id' => $a->id,
+                        'kursi' => $a->kursi,
+                        'tanggal' => date_format(date_create($tgl), 'Y-m-d H:i'),
+                        'status' => '0',
+                        'nama' => $a->nama,
+                        'email' => $a->email,
+                        'batal' => $tgl_batal
+                    ];
+                    array_push($ass, $data['id'] . '<br>');
+                    $obj->cancel_reservation($data['id']);
+                    $mail = new MailController();
+                    $mail->cancel_reservation($data);
+                }
+            }
+        }
+        return $ass;
     }
 }

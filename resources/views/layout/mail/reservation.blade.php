@@ -22,8 +22,8 @@ else {
 
     <div class="card rsv-card">
         <div class="card-body">
-            <h2 class="card-title">Reservasi berhasil.</h2>
-            <p class="card-text mgt">Berikut adalah detail reservasi anda.</p>
+            <h2 class="card-title">{{ $title }}</h2>
+            <p class="card-text mgt">{{ $desc }}</p>
 
             <table class="table rsv-tbl">
                 <tbody>
@@ -38,6 +38,10 @@ else {
                     <tr class="table-secondary">
                         <th scope="row">Jumlah kursi</th>
                         <td><?php echo $detail['kursi']; ?></td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Status</th>
+                        <td>{{ $status }}</td>
                     </tr>
                     <tr class="table-secondary">
                         <th scope="row">Tanggal</th>

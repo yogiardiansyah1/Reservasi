@@ -40,7 +40,7 @@ class MailController extends Controller
     public function cancel_reservation($data)
     {
         $person = ['email' => $data['email'], 'nama' => $data['nama']];
-        Mail::send('layout/mail/reservation-cancel', ['detail' => $data], function ($mail) use ($person) {
+        Mail::send('layout/mail/reservation', ['detail' => $data], function ($mail) use ($person) {
             $mail->to($person['email'], $person['nama'])
                 ->subject("Reservasi Dibatalkan");
         });

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\BatalkanReservasi;
 use App\Console\Commands\KirimPenjualan;
 use App\Http\Controllers\PenjualanController;
 use Illuminate\Console\Scheduling\Schedule;
@@ -16,6 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         KirimPenjualan::class,
+        BatalkanReservasi::class,
     ];
 
     /**
@@ -26,13 +28,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('laporan:email')->dailyAt('23:59');
-        $schedule->command('laporan:email')->everyMinute();
-
-        // $schedule->call(function () {
-        //     $cr = new PenjualanController();
-        //     $cr->createxml();
-        // })->daily();
+        $schedule->command('laporan:email')->dailyAt('20:50')->timezone('Asia/Jakarta');
+        // $schedule->command('laporan:email')->everyMinute()->timezone('Asia/Jakarta');
+        $schedule->command('email:cancel-reservation')->everyMinute();
     }
 
     /**
