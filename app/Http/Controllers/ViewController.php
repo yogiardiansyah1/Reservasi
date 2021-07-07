@@ -65,6 +65,8 @@ class ViewController extends Controller
 
     public function test()
     {
+        session_start();
+        return view('test');
     }
 
     public function csv()
