@@ -49,7 +49,7 @@ $msg =
                                         <form class="d-flex" method="POST"
                                             action="/resto/pembayaran/tambah/{{ $p->id }}">
                                             {{ csrf_field() }}
-                                            <input type="number" class="form-control" style="width:100px ;" id=""
+                                            <input type="number" min="1" max="50" oninput="validity.valid||(value='');" class="form-control" style="width:100px ;" id=""
                                                 placeholder="Qty" name="qty" required>
                                             <button class="btn btn-primary my-2 my-sm-0" type="submit">+</button>
                                         </form>
@@ -71,6 +71,7 @@ $msg =
                                         <div class="col-lg-5">Nama</div>
                                         <div class="col-lg-3">Qty</div>
                                         <div class="col-lg-3">Subtotal</div>
+
                                     </div>
                                 </li>
                                 @foreach ($keranjang as $i)
@@ -80,20 +81,33 @@ $msg =
                                             <div class="col-lg-5">
                                                 {{ $i['nama'] }}
                                             </div>
-                                            <div class="col-lg-3">
-                                            <div class="col-lg-3">
-                                                <form d method="POST" action="/resto/pembayaran/edit/{{ $i['id'] }}">
-                                                    <input type="number" class="form-control" style="width:100px ;" id=""
-                                                        placeholder="Qty" value="{{ $i['qty'] }}">
-                                                </form>
+                                            <div class="col-lg-5" style="display: none">
+                                                {{ $i['id'] }}
                                             </div>
+                                            <div class="col-lg-3">
+                                                <div class="col-lg-3">
+                                                    <form d method="POST"
+                                                        action="/resto/pembayaran/edit/{{ $i['id'] }}">
+                                                        <input type="number" class="form-control" style="width:100px ;"
+                                                            id="" placeholder="Qty" value="{{ $i['qty'] }}">
+                                                    </form>
+                                                </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                Rp. 
+                                                Rp.
                                                 <?php
                                                 $sub = $i['harga'] * $i['qty'];
                                                 echo number_format($sub, 0, '', '.');
                                                 ?>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <form method="GET" action="/resto/pembayaran/hapus/{{ $i['id'] }}">
+                                                    {{ csrf_field() }}
+                                                    {{-- <input type="text" value={{ $i['id'] }} name> --}}
+                                                    <input class="btn btn-primary my-2 my-sm-0" type="submit" value="Hapus">
+                                                    {{-- <button id="id_mkn" onclick="console.log(this.value)" class="btn btn-primary my-2 my-sm-0" type="button" --}}
+                                                    {{-- value={{ $i['id'] }}>Hapus</button> --}}
+                                                </form>
                                             </div>
                                         </div>
                                     </li>
@@ -121,6 +135,10 @@ $msg =
             </div>
         </div>
     </div>
+
+
+
+
 
 
 @endsection

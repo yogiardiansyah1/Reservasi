@@ -14,6 +14,27 @@ class PenjualanController extends Controller
         DB::table('penjualan')->insert($data);
     }
 
+    public function hapus($id){
+        session_start();
+        foreach ($_SESSION['keranjang'] as $item){
+            if ($item['id'] == $id) {
+                $index_arr = array_search($item, $_SESSION['keranjang']);
+                unset($_SESSION['keranjang'][$index_arr]); 
+            }
+        }
+        array_values($_SESSION['keranjang']);
+        return redirect()->route('pembayaran');
+        // $object = new MenuController();
+        // return $object->getMenuById($id);
+        // echo("<script type='text/javascript'>alert('$id');</script>");
+        // session_start();
+        // if (isset($_SESSION['keranjang'])){
+        //     unset($_SESSION['keranjang'][$i]);
+        // }
+
+        
+    }
+
     public function bayar(Request $data)
     {
         date_default_timezone_set('Asia/Jakarta');
