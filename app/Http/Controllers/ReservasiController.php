@@ -84,8 +84,6 @@ class ReservasiController extends Controller
             ->where('status', '1')
             ->whereBetween('tanggal', [$dari, $sampai])
             ->get();
-
-        // return date_format($dari, 'Y-m-d');
         return $r;
     }
 

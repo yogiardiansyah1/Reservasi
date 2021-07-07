@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('laporan:email')->dailyAt('20:50')->timezone('Asia/Jakarta');
-        // $schedule->command('laporan:email')->everyMinute()->timezone('Asia/Jakarta');
+        // $schedule->command('email:laporan')->dailyAt('23:58')->timezone('Asia/Jakarta');
+        $schedule->command('email:laporan')->everyMinute()->timezone('Asia/Jakarta');
         $schedule->command('email:cancel-reservation')->everyMinute();
     }
 

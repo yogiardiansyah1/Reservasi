@@ -12,7 +12,7 @@ class KirimPenjualan extends Command
      *
      * @var string
      */
-    protected $signature = 'laporan:email';
+    protected $signature = 'email:laporan';
 
     /**
      * The console command description.

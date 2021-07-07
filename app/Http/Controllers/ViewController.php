@@ -65,12 +65,7 @@ class ViewController extends Controller
 
     public function test()
     {
-        $obj = new ReservasiController();
-        return view('test', ['ass' => $obj->batal()]);
-    }
-
-    public function csv()
-    {
-        return view('penjualan/csv');
+        $obj = new RestoController();
+        return view('test', ['managers' => $obj->get_all_manager()]);
     }
 }

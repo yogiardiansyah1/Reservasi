@@ -26,15 +26,29 @@ class MailController extends Controller
         $penjualan->createxml();
         $penjualan->createcsv();
 
-        $data = array('name' => "Yogi Ardiansyah");
-        Mail::send('/layout/mail/penjualan', $data, function ($message) {
-            $date = date('dmY');
-            $path_csv = 'public/csv/';
-            $csv_file_name = $path_csv . $date . '.csv';
-            $message->to('yogiardiansyah12@gmail.com', 'Yogi Ardiansyah')->subject('Recap Penjualan');
-            $message->attach($csv_file_name);
-            $message->from('yogiardiansyah1111@gmail.com', 'Yogi Ardiansyah');
-        });
+        $resto = new RestoController();
+        $managers = $resto->get_all_manager();
+
+
+        foreach ($managers as $manager) {
+            $person = ['email' => $manager->email, 'nama' => $manager->nama];
+            Mail::send('layout/mail/penjualan', ['nama' => $manager->nama], function ($mail) use ($person) {
+                $date = date('dmY');
+                $path_csv = 'public/csv/';
+                $path_xml = 'public/xml/';
+                $csv_file_name = $path_csv . $date . '.csv';
+                $xml_file_name = $path_xml . $date . '.xml';
+                $mail->attach($csv_file_name);
+                $mail->attach($xml_file_name);
+                $mail->from('no-reply@reesto.com', 'REESTO [SYSTEM]');
+                $mail->to($person['email'], $person['nama'])
+                    ->subject("Laporan Penjualan pada tanggal " . date('d-m-Y'));
+            });
+            if (Mail::failures()) {
+                return "gagal mengirim email.";
+            }
+            return "berhasil mengirim email.";
+        }
     }
 
     public function cancel_reservation($data)

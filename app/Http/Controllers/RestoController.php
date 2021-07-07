@@ -34,6 +34,10 @@ class RestoController extends Controller
         return redirect()->route('login');
     }
 
+    public function get_all_manager(){
+        return DB::table('karyawan')->where('id', 'LIKE', 'M-%')->get();
+    }
+
     public function insert($data)
     {
         DB::table('karyawan')->insert($data);
