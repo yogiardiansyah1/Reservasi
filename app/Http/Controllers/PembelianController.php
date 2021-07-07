@@ -10,17 +10,24 @@ class PembelianController extends Controller
     {
         $object = new MenuController();
         $i = $object->getMenuById($id);
-        $item = array(
-            'id' => $i['0']->id,
+        $item = [
+            'id' => $id,
             'nama' => $i['0']->nama,
             'harga' => $i['0']->harga,
             'qty' => $data['qty']
-        );
+        ];
         session_start();
         if (!isset($_SESSION['keranjang'])) {
-            $_SESSION['keranjang'] = array($item);
+            $_SESSION['keranjang'] = ['0' => $item];
         } else {
-            array_push($_SESSION['keranjang'], $item);
+            foreach ($_SESSION['keranjang'] as $idx => $dt) {
+                if ($dt['id'] == $id) {
+                    $_SESSION['keranjang'][$idx]['qty'] = $_SESSION['keranjang'][$idx]['qty'] + $data['qty'];
+                    return redirect()->route('pembayaran');
+                }
+            }
+            $idx = sizeof($_SESSION['keranjang']);
+            $_SESSION['keranjang'][$idx] = $item;
         }
         return redirect()->route('pembayaran');
         // return $s.'<br>'.sizeof($_SESSION['keranjang']).' | '.$_SESSION['keranjang'];

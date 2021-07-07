@@ -65,10 +65,8 @@ class ViewController extends Controller
 
     public function test()
     {
-        $obj = new ReservasiController();
-        $data = $obj->getReservasiAktif();
-        // return $data;
-        return view('test', ['data' => $data]);
+        session_start();
+        return view('test');
     }
 
     public function csv()
