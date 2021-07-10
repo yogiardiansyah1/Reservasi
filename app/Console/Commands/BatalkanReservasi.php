@@ -48,7 +48,7 @@ class BatalkanReservasi extends Command
             $jam = date_format(date_create($tgl), 'H');
             $menit = date_format(date_create($tgl), 'i');
             if (date('H') == $jam) {
-                $jarak = 5; // jarak waktu pembatalan reservasi [menit]
+                $jarak = 15; // jarak waktu pembatalan reservasi [menit]
                 if (date('i') >= ($menit + $jarak)) { 
                     $tgl_batal = date_format(date_create($tgl), 'Y-m-d ' . $jam . ':' . $menit);
                     $data = [

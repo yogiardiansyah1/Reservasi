@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<detail_penjualan>
+  <penjualan>
+    <ID_Penjualan>2107100001</ID_Penjualan>
+    <ID_Menu>M0001</ID_Menu>
+    <Quantity>3</Quantity>
+    <Harga>15000</Harga>
+    <Subtotal>45000</Subtotal>
+  </penjualan>
+  <penjualan>
+    <ID_Penjualan>2107100001</ID_Penjualan>
+    <ID_Menu>M0004</ID_Menu>
+    <Quantity>2</Quantity>
+    <Harga>3000</Harga>
+    <Subtotal>6000</Subtotal>
+  </penjualan>
+  <penjualan>
+    <ID_Penjualan>2107100001</ID_Penjualan>
+    <ID_Menu>M0005</ID_Menu>
+    <Quantity>1</Quantity>
+    <Harga>4000</Harga>
+    <Subtotal>4000</Subtotal>
+  </penjualan>
+</detail_penjualan>
