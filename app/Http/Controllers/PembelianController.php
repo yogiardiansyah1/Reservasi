@@ -26,8 +26,9 @@ class PembelianController extends Controller
                     return redirect()->route('pembayaran');
                 }
             }
-            $idx = sizeof($_SESSION['keranjang']);
-            $_SESSION['keranjang'][$idx] = $item;
+            // $idx = sizeof($_SESSION['keranjang']);
+            // $_SESSION['keranjang'][$idx] = $item;
+            array_push($_SESSION['keranjang'], $item);
         }
         return redirect()->route('pembayaran');
         // return $s.'<br>'.sizeof($_SESSION['keranjang']).' | '.$_SESSION['keranjang'];
