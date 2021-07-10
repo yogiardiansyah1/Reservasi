@@ -25,6 +25,10 @@ Route::get('/resto/penjualan', 'ViewController@resto_penjualan');
 Route::get('/resto/karyawan', 'ViewController@resto_karyawan');
 Route::post('/resto/pembayaran/bayar', 'PenjualanController@bayar');
 Route::get('/resto/pembayaran/hapus/{id}', 'PenjualanController@hapus');
+Route::get('/resto/riwayat', 'ViewController@resto_riwayat');
+Route::post('/resto/detail', 'PenjualanController@getDetail');
+Route::get('/resto/reservasi', 'ViewController@resto_reservasi');
+Route::post('/resto/confirm', 'ReservasiController@confirm_reservation');
 
 //  RESERVASI
 Route::get('/reservasi', 'ViewController@reservasi_index');

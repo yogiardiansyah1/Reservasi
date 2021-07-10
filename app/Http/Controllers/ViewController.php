@@ -36,6 +36,28 @@ class ViewController extends Controller
             return redirect()->route('login');
         }
     }
+    
+    public function resto_riwayat()
+    {
+        session_start();
+        if (isset($_SESSION['id'])) {
+            $object = new PenjualanController();
+            return view('penjualan/index', ['data' => $object->getAll()]);
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function resto_reservasi()
+    {
+        session_start();
+        if (isset($_SESSION['id'])) {
+            $object = new ReservasiController();
+            return view('reservasi/karyawan', ['data' => $object->getReservasiAktif()]);
+        } else {
+            return redirect()->route('login');
+        }
+    }
 
     public function resto_penjualan()
     {

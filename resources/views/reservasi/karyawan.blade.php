@@ -15,16 +15,17 @@ return redirect('/resto/login');
             <div class="col-lg-12">
                 <div class="bg-white p-3">
                     <div class="row">
-                        <div class="col-lg-8 h1 pt-2">Riwayat Penjualan</div>
+                        <div class="col-lg-8 h1 pt-2">Detail Reservasi</div>
                     </div>
                     <table id="riwayat" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr class="bg-primary text-white">
                                 <th scope="col">ID</th>
-                                <th scope="col">ID Karyawan</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Bayar</th>
+                                <th scope="col">Kursi</th>
                                 <th scope="col">Tanggal</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -32,16 +33,17 @@ return redirect('/resto/login');
                             @foreach ($data as $d)
                                 <tr class="table-secondary">
                                     <td class="pt-5">{{ $d->id }}</td>
-                                    <td class="pt-5">{{ $d->id_karyawan }}</td>
-                                    <td class="pt-5">{{ $d->total }}</td>
-                                    <td class="pt-5">{{ $d->bayar }}</td>
+                                    <td class="pt-5">{{ $d->kursi }}</td>
                                     <td class="pt-5">{{ $d->tanggal }}</td>
+                                    <td class="pt-5">{{ $d->status }}</td>
+                                    <td class="pt-5">{{ $d->nama }}</td>
+                                    <td class="pt-5">{{ $d->email }}</td>
                                     <td>
-                                        <form method="POST" action="/resto/detail">
+                                        <form id="formKonfirmasi" method="POST" action="/resto/confirm">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="id" value="{{$d->id}}">
-                                            <input type="submit" value="Detail"> 
                                         </form>
+                                        <button onclick="konfirmasiAlert()">Confirm</button> 
                                     </td>
                                 </tr>
                             @endforeach
@@ -51,9 +53,19 @@ return redirect('/resto/login');
             </div>
         </div>
     </div>
+
     <script>
         $(document).ready(function() {
         $('#riwayat').DataTable();
         } );
     </script>
+    <script>
+        function konfirmasiAlert() {
+        var txt;
+            if (confirm("Apakah Kamu yakin?")) {
+                document.getElementById("formKonfirmasi").submit();
+            } else {
+            }
+}
+        </script>
 @endsection

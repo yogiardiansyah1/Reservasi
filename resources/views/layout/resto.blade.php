@@ -21,6 +21,9 @@
                         <a class="nav-link" href="/resto/pembayaran">Pembayaran</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/resto/reservasi">Reservasi</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/resto/riwayat">Riwayat</a>
                     </li>
                 </ul>

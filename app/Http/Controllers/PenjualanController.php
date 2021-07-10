@@ -94,9 +94,9 @@ class PenjualanController extends Controller
     }
 
     //Detail Penjualan
-    public function getAlldetail()
+    public function getDetail(request $id)
     {
-        return view('penjualan/xml', ['dat' => DB::table('detail_penjualan')->get()]);
+        return view ('penjualan/detail',['data' => DB::table('detail_penjualan')->where('id_penjualan',$id['id'])->get()]);
     }
 
     public function getdetailbyDatenow()

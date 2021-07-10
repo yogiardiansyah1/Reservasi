@@ -90,6 +90,12 @@ class ReservasiController extends Controller
     public function cancel_reservation($id)
     {
         DB::table('reservasi')->where('id', $id)->update(['status' => '0']);
+    
+    }
+    public function confirm_reservation(request $id)
+    {
+        DB::table('reservasi')->where('id', $id['id'])->update(['status' => '2']);
+        return redirect('resto/reservasi');
     }
 
     public function batal()
