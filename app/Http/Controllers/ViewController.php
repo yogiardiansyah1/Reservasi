@@ -56,8 +56,8 @@ class ViewController extends Controller
     {
         $tgl = str_replace('T', ' ', $data['tanggal']);
         date_default_timezone_set('Asia/Jakarta');
-        if (date('d') >= date_format(date_create($tgl), 'd')) {
-            // return redirect()->back()->with(['msg' => 'Minimal tanggal reservasi H-1.']);
+        if (date('d') > date_format(date_create($tgl), 'd')) {
+            return redirect()->back()->with(['msg' => 'Minimal tanggal reservasi H-1.']);
         }
         $object = new ReservasiController();
         return view('reservasi/detail', ['tgl' => $data['tanggal'], 'data' => $object->getSisaKursi($tgl)]);

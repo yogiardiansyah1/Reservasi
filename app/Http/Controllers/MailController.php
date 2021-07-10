@@ -22,6 +22,7 @@ class MailController extends Controller
 
     public function attachment_email()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $penjualan = new PenjualanController();
         $penjualan->createxml();
         $penjualan->createcsv();
